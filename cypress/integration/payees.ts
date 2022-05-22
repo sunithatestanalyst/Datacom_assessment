@@ -18,7 +18,7 @@ describe('Payees page tests',()=>{
         cy.get('.CustomPage-heading').should('contain.text','Payees');
     })
 
-    it('TC2- Verify new payee is added successfully in the Payees page ',()=>{
+    it.only('TC2- Verify new payee is added successfully in the Payees page ',()=>{
         //click Add button
         cy.get(':nth-child(3) > .Button').should('be.visible').click();
         // Add payee pop up 
@@ -30,6 +30,10 @@ describe('Payees page tests',()=>{
         cy.get('.js-submit').click();
         // Validation message
         cy.get('.message').should('be.visible').should('contain.text','Payee added');
+        //search
+        cy.get('.Form-control').type('tyco cylinder');
+        cy.get('.js-payee-name').should('contain.text','TYCO CYLINDER TESTING')
+
 
     })
 

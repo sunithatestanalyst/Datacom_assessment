@@ -15,14 +15,14 @@ describe('Payees page tests',()=>{
     it('TC5-Transfer amount',()=>{
 
         //Get everyday balance
-        var availBal:any
+        var availBal: string
         cy.get('#account-ACC-1 > .account-info > .account-balance').then(($val)=>{
            var availBalance = $val.text();  
            availBal = availBalance.replace(/,/g, '');
 
         })
         //GEt Bills balance
-        var availBalBills:any
+        var availBalBills:string
         cy.get('#account-ACC-5 > .account-info > .account-balance').then(($vl)=>{
            var availBalanceBills =$vl.text();
            availBalBills = availBalanceBills.replace(/,/g, '');
@@ -36,7 +36,7 @@ describe('Payees page tests',()=>{
         cy.get('[data-testid="to-account-chooser"]').click()
         cy.get('[data-testid="to-account-accounts-tab"]').click()
         cy.get('.list-1-1-76 > :nth-child(1) > button').click();        
-        var everyCurrentBal :any        
+        var everyCurrentBal: string      
         cy.get('#field-bnz-web-ui-toolkit-9').type('500')
         cy.get('.Button-component-106 > .Button-wrapper-98').click()
         cy.get('.message').should('contain.text','Transfer successful').should('be.visible')
@@ -46,7 +46,7 @@ describe('Payees page tests',()=>{
          var testBal = Number(availBal)-500            
          expect(Number(everyCurrentBal)).to.eq(testBal)
         })
-        var billsCurrentBalance: any
+        var billsCurrentBalance: string
         cy.get('#account-ACC-5 > .account-info > .account-balance').then(($at)=>{
             var billCurrentBal= $at.text();
             billsCurrentBalance =billCurrentBal.replace(/,/g, '')
